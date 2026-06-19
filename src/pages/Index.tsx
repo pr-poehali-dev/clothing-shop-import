@@ -1,8 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 
 const IMG_SUPREME = 'https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/e62d8eb0-e80b-495d-9a60-5fd0b6234d80.jpg';
@@ -347,37 +345,7 @@ const Index = () => {
         )}
       </section>
 
-      {/* SELLER PANEL */}
-      <section id="sell" className="container py-20">
-        <div className="bg-primary text-primary-foreground rounded-[2.5rem] p-8 md:p-14 grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <Badge className="rounded-full bg-accent text-accent-foreground border-0 mb-5 font-semibold">Панель продавца</Badge>
-            <h2 className="font-display font-black text-4xl md:text-5xl tracking-tight mb-5">Добавь свой товар за минуту</h2>
-            <p className="opacity-80 mb-6">Загрузи фото, укажи цену и размер — товар появится в каталоге. Покупатели оставляют отзывы и оценки, а ты растишь свой рейтинг продавца.</p>
-            <ul className="space-y-3">
-              {['Без комиссии на старте', 'Защита сделок и проверка', 'Рейтинг и отзывы покупателей'].map((t) => (
-                <li key={t} className="flex items-center gap-3">
-                  <Icon name="CircleCheck" size={20} className="text-accent" /> {t}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="bg-card text-foreground rounded-3xl p-6 md:p-8">
-            <h3 className="font-bold text-xl mb-5">Новый товар</h3>
-            <div className="space-y-4">
-              <Input placeholder="Название товара" className="rounded-xl h-12 border-2" />
-              <div className="grid grid-cols-2 gap-4">
-                <Input placeholder="Цена, ₽" className="rounded-xl h-12 border-2" />
-                <Input placeholder="Размер (S/M/L)" className="rounded-xl h-12 border-2" />
-              </div>
-              <Textarea placeholder="Описание и ссылка на товар в Китае" className="rounded-xl border-2 min-h-24" />
-              <Button className="w-full rounded-xl h-12 font-semibold text-base">
-                <Icon name="Plus" size={18} /> Опубликовать товар
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* REVIEWS */}
       <section id="reviews" className="container py-20">
