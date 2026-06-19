@@ -68,7 +68,7 @@ const Index = () => {
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border">
         <div className="container flex items-center justify-between h-16">
           <button onClick={() => scrollTo('top')} className="font-display font-black text-2xl tracking-tight">
-            DRIP<span className="text-primary">.</span>
+            THORN<span className="text-primary">.</span>
           </button>
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
             <button onClick={() => scrollTo('catalog')} className="hover:text-primary transition-colors">Каталог</button>
@@ -90,7 +90,7 @@ const Index = () => {
               🚀 Выкуп вещей с Китая под ключ
             </Badge>
             <h1 className="font-display font-black text-5xl md:text-7xl leading-[0.95] tracking-tight mb-6">
-              Твой <span className="text-gradient">дрип</span><br />из Поднебесной
+              Твой <span className="text-gradient">стиль</span><br />из Поднебесной
             </h1>
             <p className="text-lg text-muted-foreground max-w-md mb-8">
               Заказывай трендовую одежду напрямую с китайских площадок. Мы выкупаем, проверяем и доставляем — без переплат и риска.
@@ -275,7 +275,7 @@ const Index = () => {
             <Icon name="Sparkles" size={28} className="text-primary mb-4" />
             <h2 className="font-display font-black text-3xl tracking-tight mb-4">О компании</h2>
             <p className="text-muted-foreground leading-relaxed">
-              DRIP — маркетплейс выкупа одежды с китайских площадок. Мы соединяем покупателей с проверенными продавцами, берём на себя выкуп, контроль качества и доставку. Тысячи довольных клиентов получают модные вещи без переплат и рисков.
+              THORN — маркетплейс выкупа одежды с китайских площадок. Мы соединяем покупателей с проверенными продавцами, берём на себя выкуп, контроль качества и доставку. Тысячи довольных клиентов получают модные вещи без переплат и рисков.
             </p>
           </div>
           <div className="bg-card rounded-3xl border border-border p-8 md:p-10">
@@ -294,8 +294,8 @@ const Index = () => {
       {/* FOOTER */}
       <footer className="border-t border-border mt-10">
         <div className="container py-10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="font-display font-black text-xl">DRIP<span className="text-primary">.</span></div>
-          <p className="text-sm text-muted-foreground">© 2026 DRIP — выкуп одежды с Китая</p>
+          <div className="font-display font-black text-xl">THORN<span className="text-primary">.</span></div>
+          <p className="text-sm text-muted-foreground">© 2026 THORN SHOP — выкуп одежды с Китая</p>
           <div className="flex gap-4">
             {['Instagram', 'Send', 'Youtube'].map((n) => (
               <a key={n} href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors">
