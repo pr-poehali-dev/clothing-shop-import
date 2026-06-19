@@ -5,13 +5,16 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 
-const IMG1 = 'https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/28d6ec36-1011-41c5-b2c2-61e8d2bf2e3c.jpg';
-const IMG2 = 'https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/ca9d950b-22f1-4e8b-9b2e-248dbbb04c2b.jpg';
-const IMG3 = 'https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/47722d1a-1acd-44f6-935c-50d68e3b590f.jpg';
+const IMG_SUPREME = 'https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/e62d8eb0-e80b-495d-9a60-5fd0b6234d80.jpg';
+const IMG_OFFWHITE = 'https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/fe32b7e4-2c6e-49c8-ba66-d859e513ca13.jpg';
+const IMG_PALMANGELS = 'https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/33f5d6f1-4456-492f-bb2c-776ed33f5f1d.jpg';
+const IMG_CARHARTT = 'https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/6a791da5-2e8a-4cfa-bc31-83d81473064b.jpg';
+const IMG_HERO = 'https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/c57daadc-411a-4ef8-9648-5c53200caf4d.jpg';
 
 type Product = {
   id: number;
   name: string;
+  brand: string;
   seller: string;
   price: number;
   size: string;
@@ -22,12 +25,12 @@ type Product = {
 };
 
 const PRODUCTS: Product[] = [
-  { id: 1, name: 'Оверсайз куртка Urban', seller: 'DripStore', price: 4200, size: 'M', style: 'Streetwear', rating: 4.9, reviews: 128, img: IMG1 },
-  { id: 2, name: 'Кроссовки Air Flow', seller: 'KicksCN', price: 5600, size: 'L', style: 'Спорт', rating: 4.7, reviews: 86, img: IMG2 },
-  { id: 3, name: 'Вязаный свитер Cozy', seller: 'WarmWave', price: 2800, size: 'S', style: 'Базовый', rating: 4.8, reviews: 64, img: IMG3 },
-  { id: 4, name: 'Худи Neon Vibes', seller: 'DripStore', price: 3100, size: 'XL', style: 'Streetwear', rating: 4.6, reviews: 53, img: IMG2 },
-  { id: 5, name: 'Свитер Minimal Beige', seller: 'WarmWave', price: 3400, size: 'M', style: 'Базовый', rating: 5.0, reviews: 41, img: IMG3 },
-  { id: 6, name: 'Куртка Bold Statement', seller: 'KicksCN', price: 6900, size: 'L', style: 'Спорт', rating: 4.5, reviews: 97, img: IMG1 },
+  { id: 1, name: 'Box Logo Hoodie', brand: 'Supreme', seller: 'ThornDrop', price: 8900, size: 'M', style: 'Streetwear', rating: 4.9, reviews: 214, img: IMG_SUPREME },
+  { id: 2, name: 'Diagonal Stripe Tee', brand: 'Off-White', seller: 'LuxCN', price: 6400, size: 'L', style: 'Streetwear', rating: 4.8, reviews: 97, img: IMG_OFFWHITE },
+  { id: 3, name: 'Track Jacket', brand: 'Palm Angels', seller: 'TrendHouse', price: 11200, size: 'M', style: 'Спорт', rating: 4.7, reviews: 63, img: IMG_PALMANGELS },
+  { id: 4, name: 'Canvas Work Jacket', brand: 'Carhartt WIP', seller: 'TrendHouse', price: 7800, size: 'XL', style: 'Базовый', rating: 4.9, reviews: 148, img: IMG_CARHARTT },
+  { id: 5, name: 'Script Logo Tee', brand: 'Supreme', seller: 'ThornDrop', price: 4200, size: 'S', style: 'Streetwear', rating: 4.6, reviews: 88, img: IMG_SUPREME },
+  { id: 6, name: 'Arrow Logo Hoodie', brand: 'Off-White', seller: 'LuxCN', price: 9600, size: 'L', style: 'Спорт', rating: 5.0, reviews: 41, img: IMG_OFFWHITE },
 ];
 
 const SIZES = ['Все', 'S', 'M', 'L', 'XL'];
@@ -50,7 +53,7 @@ const Stars = ({ value, size = 14 }: { value: number; size?: number }) => (
 const Index = () => {
   const [size, setSize] = useState('Все');
   const [style, setStyle] = useState('Все');
-  const [maxPrice, setMaxPrice] = useState(7000);
+  const [maxPrice, setMaxPrice] = useState(12000);
 
   const filtered = useMemo(
     () =>
@@ -119,12 +122,12 @@ const Index = () => {
           <div className="relative animate-float-up" style={{ animationDelay: '0.15s' }}>
             <div className="absolute -inset-4 bg-gradient-to-tr from-secondary/10 to-foreground/5 blur-3xl rounded-full" />
             <img
-              src="https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/0506ac4d-f134-49ee-a795-16912f2cb4ca.jpg"
-              alt="Supreme, Off-White, Palm Angels, Essentials"
+              src={IMG_HERO}
+              alt="Supreme, Off-White, Palm Angels, Carhartt WIP"
               className="relative rounded-3xl w-full object-cover aspect-[4/5] shadow-2xl"
             />
             <div className="absolute top-4 left-4 flex flex-col gap-2">
-              {['Supreme', 'Off-White', 'Palm Angels', 'Essentials'].map((b) => (
+              {['Supreme', 'Off-White', 'Palm Angels', 'Carhartt WIP'].map((b) => (
                 <span key={b} className="text-[10px] font-bold tracking-widest uppercase bg-background/90 backdrop-blur px-3 py-1 rounded-full border border-border shadow-sm">
                   {b}
                 </span>
@@ -181,7 +184,7 @@ const Index = () => {
           </div>
           <div className="flex-1">
             <div className="text-sm font-semibold mb-3">Цена до: <span className="text-primary">{maxPrice} ₽</span></div>
-            <input type="range" min={2000} max={7000} step={100} value={maxPrice} onChange={(e) => setMaxPrice(+e.target.value)} className="w-full accent-primary mt-3" />
+            <input type="range" min={4000} max={12000} step={100} value={maxPrice} onChange={(e) => setMaxPrice(+e.target.value)} className="w-full accent-primary mt-3" />
           </div>
         </div>
 
@@ -195,8 +198,9 @@ const Index = () => {
                 <Badge className="absolute top-3 right-3 rounded-full bg-accent text-accent-foreground border-0">{p.size}</Badge>
               </div>
               <div className="p-5">
-                <div className="flex items-center gap-1.5 mb-2 text-xs text-muted-foreground">
-                  <Icon name="Store" size={13} /> {p.seller}
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[10px] font-black tracking-widest uppercase text-foreground bg-muted px-2 py-0.5 rounded-full">{p.brand}</span>
+                  <span className="flex items-center gap-1 text-xs text-muted-foreground"><Icon name="Store" size={12} /> {p.seller}</span>
                 </div>
                 <h3 className="font-bold text-lg leading-tight mb-2">{p.name}</h3>
                 <div className="flex items-center gap-2 mb-4">
