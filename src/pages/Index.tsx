@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 
-const IMG1 = 'https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/b71dc26b-f937-4795-b3fa-e0549ddd1613.jpg';
+const IMG1 = 'https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/28d6ec36-1011-41c5-b2c2-61e8d2bf2e3c.jpg';
 const IMG2 = 'https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/ca9d950b-22f1-4e8b-9b2e-248dbbb04c2b.jpg';
 const IMG3 = 'https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/47722d1a-1acd-44f6-935c-50d68e3b590f.jpg';
 
