@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 40 33% 97%;
-    --foreground: 260 30% 8%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 6%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 260 30% 8%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 6%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 260 30% 8%;
+    --popover-foreground: 0 0% 6%;
 
-    --primary: 262 83% 58%;
+    --primary: 0 0% 8%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 14 100% 60%;
+    --secondary: 0 84% 50%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 40 20% 92%;
-    --muted-foreground: 260 10% 40%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 44%;
 
-    --accent: 84 81% 55%;
-    --accent-foreground: 260 30% 8%;
+    --accent: 0 0% 92%;
+    --accent-foreground: 0 0% 8%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 260 15% 88%;
-    --input: 260 15% 88%;
-    --ring: 262 83% 58%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 0 0% 8%;
 
     --radius: 1rem;
 
@@ -106,25 +106,17 @@
     font-family: "Unbounded", sans-serif;
   }
   .text-gradient {
-    background: linear-gradient(110deg, hsl(262 83% 58%), hsl(14 100% 60%));
+    background: linear-gradient(110deg, hsl(0 0% 6%), hsl(0 84% 50%));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   .bg-mesh {
-    background-color: hsl(40 33% 97%);
+    background-color: hsl(0 0% 100%);
     background-image:
-      radial-gradient(
-        at 15% 20%,
-        hsla(262, 83%, 58%, 0.18) 0px,
-        transparent 50%
-      ),
-      radial-gradient(
-        at 85% 10%,
-        hsla(14, 100%, 60%, 0.18) 0px,
-        transparent 50%
-      ),
-      radial-gradient(at 70% 90%, hsla(84, 81%, 55%, 0.2) 0px, transparent 50%);
+      radial-gradient(at 10% 15%, hsla(0, 84%, 50%, 0.07) 0px, transparent 55%),
+      radial-gradient(at 90% 5%, hsla(0, 0%, 6%, 0.04) 0px, transparent 55%),
+      radial-gradient(at 60% 95%, hsla(0, 84%, 50%, 0.05) 0px, transparent 55%);
   }
   .hover-scale {
     @apply transition-transform duration-300 hover:scale-[1.03];
