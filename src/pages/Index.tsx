@@ -119,12 +119,12 @@ const Index = () => {
           <div className="relative animate-float-up" style={{ animationDelay: '0.15s' }}>
             <div className="absolute -inset-4 bg-gradient-to-tr from-secondary/10 to-foreground/5 blur-3xl rounded-full" />
             <img
-              src="https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/87f50cb1-743e-4afb-b1c6-b1bbc083f7a8.jpg"
-              alt="Stone Island, BAPE, AAPE, CP Company"
+              src="https://cdn.poehali.dev/projects/f37cc239-d18c-4bae-bb5f-b49536b6b966/files/0506ac4d-f134-49ee-a795-16912f2cb4ca.jpg"
+              alt="Supreme, Off-White, Palm Angels, Essentials"
               className="relative rounded-3xl w-full object-cover aspect-[4/5] shadow-2xl"
             />
             <div className="absolute top-4 left-4 flex flex-col gap-2">
-              {['Stone Island', 'BAPE', 'AAPE', 'CP Company'].map((b) => (
+              {['Supreme', 'Off-White', 'Palm Angels', 'Essentials'].map((b) => (
                 <span key={b} className="text-[10px] font-bold tracking-widest uppercase bg-background/90 backdrop-blur px-3 py-1 rounded-full border border-border shadow-sm">
                   {b}
                 </span>
