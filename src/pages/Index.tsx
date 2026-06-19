@@ -117,14 +117,35 @@ const Index = () => {
             </div>
           </div>
           <div className="relative animate-float-up" style={{ animationDelay: '0.15s' }}>
-            <div className="absolute -inset-4 bg-gradient-to-tr from-primary/30 to-secondary/30 blur-3xl rounded-full" />
-            <img src={IMG1} alt="Модель" className="relative rounded-3xl w-full object-cover aspect-[4/5] shadow-2xl" />
-            <div className="absolute bottom-6 -left-4 bg-card rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-float-up" style={{ animationDelay: '0.4s' }}>
-              <div className="bg-accent rounded-xl p-2"><Icon name="ShieldCheck" size={22} /></div>
-              <div>
-                <div className="font-bold text-sm">Проверка качества</div>
-                <div className="text-xs text-muted-foreground">перед отправкой</div>
-              </div>
+            {/* Бренды витрина */}
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { brand: 'Stone Island', item: 'Compass Patch Jacket', price: '12 400 ₽', tag: 'Хит', img: IMG2 },
+                { brand: 'BAPE', item: 'Shark Full-Zip Hoodie', price: '9 800 ₽', tag: 'Новинка', img: IMG3 },
+                { brand: 'AAPE', item: 'Moonface Tee', price: '3 600 ₽', tag: 'Топ', img: IMG1 },
+                { brand: 'CP Company', item: 'Goggle Jacket', price: '15 200 ₽', tag: 'Дроп', img: IMG3 },
+              ].map((b, i) => (
+                <div
+                  key={b.brand}
+                  className="bg-card border border-border rounded-2xl overflow-hidden hover-scale animate-float-up cursor-pointer group"
+                  style={{ animationDelay: `${0.15 + i * 0.1}s` }}
+                >
+                  <div className="relative aspect-square overflow-hidden bg-muted">
+                    <img src={b.img} alt={b.brand} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <span className="absolute top-2 left-2 text-[10px] font-bold bg-foreground text-background px-2 py-0.5 rounded-full">{b.tag}</span>
+                  </div>
+                  <div className="p-3">
+                    <div className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">{b.brand}</div>
+                    <div className="text-xs font-semibold mt-0.5 leading-tight truncate">{b.item}</div>
+                    <div className="font-display font-extrabold text-sm mt-1 text-secondary">{b.price}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* плашка */}
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-foreground text-background rounded-2xl shadow-xl px-5 py-3 flex items-center gap-3 whitespace-nowrap animate-float-up" style={{ animationDelay: '0.6s' }}>
+              <Icon name="ShieldCheck" size={18} className="text-secondary" />
+              <span className="text-sm font-semibold">Проверка качества перед отправкой</span>
             </div>
           </div>
         </div>
