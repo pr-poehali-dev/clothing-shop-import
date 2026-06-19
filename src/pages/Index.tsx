@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -50,10 +50,45 @@ const Stars = ({ value, size = 14 }: { value: number; size?: number }) => (
   </div>
 );
 
+// Считаем время до следующего дропа (ближайшее воскресенье 20:00)
+function getNextDrop() {
+  const now = new Date();
+  const next = new Date(now);
+  const day = now.getDay();
+  const daysUntilSun = (7 - day) % 7 || 7;
+  next.setDate(now.getDate() + daysUntilSun);
+  next.setHours(20, 0, 0, 0);
+  return next;
+}
+
 const Index = () => {
   const [size, setSize] = useState('Все');
   const [style, setStyle] = useState('Все');
   const [maxPrice, setMaxPrice] = useState(12000);
+  const [popup, setPopup] = useState(false);
+  const [timeLeft, setTimeLeft] = useState({ h: 0, m: 0, s: 0 });
+
+  // Попап через 2 секунды (один раз за сессию)
+  useEffect(() => {
+    if (sessionStorage.getItem('thorn_popup')) return;
+    const t = setTimeout(() => { setPopup(true); sessionStorage.setItem('thorn_popup', '1'); }, 2000);
+    return () => clearTimeout(t);
+  }, []);
+
+  // Таймер обратного отсчёта
+  useEffect(() => {
+    const target = getNextDrop();
+    const tick = () => {
+      const diff = Math.max(0, target.getTime() - Date.now());
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      setTimeLeft({ h, m, s });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
 
   const filtered = useMemo(
     () =>
@@ -65,8 +100,43 @@ const Index = () => {
 
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
+  const pad = (n: number) => String(n).padStart(2, '0');
+
   return (
     <div className="min-h-screen bg-mesh text-foreground overflow-x-hidden">
+
+      {/* ПОПАП при входе */}
+      {popup && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-float-up">
+          <div className="bg-card rounded-3xl border border-border p-8 max-w-sm w-full relative shadow-2xl text-center">
+            <button onClick={() => setPopup(false)} className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors">
+              <Icon name="X" size={20} />
+            </button>
+            <div className="text-5xl mb-4">🔥</div>
+            <h3 className="font-display font-black text-2xl mb-2">-10% на первый заказ</h3>
+            <p className="text-muted-foreground mb-6 text-sm">Напиши нам в Telegram и получи скидку на первую покупку прямо сейчас.</p>
+            <a href="https://t.me/THORNSHOOP" target="_blank" rel="noreferrer">
+              <Button className="w-full rounded-xl h-12 font-semibold text-base">
+                <Icon name="Send" size={18} /> Написать в Telegram
+              </Button>
+            </a>
+            <button onClick={() => setPopup(false)} className="mt-3 text-xs text-muted-foreground hover:text-foreground transition-colors">
+              Нет, спасибо
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ПЛАВАЮЩАЯ КНОПКА TELEGRAM */}
+      <a
+        href="https://t.me/THORNSHOOP"
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-foreground text-background rounded-full shadow-2xl flex items-center gap-2 px-5 py-3 font-semibold text-sm hover:bg-secondary transition-colors hover-scale"
+      >
+        <Icon name="Send" size={18} /> Написать
+      </a>
+
       {/* NAV */}
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border">
         <div className="container flex items-center justify-between h-16">
@@ -153,6 +223,60 @@ const Index = () => {
           ))}
         </div>
       </div>
+
+      {/* СЧЁТЧИК ДО ДРОПА */}
+      <section className="container py-10">
+        <div className="bg-foreground text-background rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <div className="text-xs font-bold tracking-widest uppercase text-secondary mb-1">Следующий дроп</div>
+            <div className="font-display font-black text-2xl md:text-3xl">Supreme × Off-White — эксклюзивная коллекция</div>
+            <div className="text-sm opacity-60 mt-1">Воскресенье, 20:00 МСК</div>
+          </div>
+          <div className="flex items-center gap-3 shrink-0">
+            {[{ v: pad(timeLeft.h), l: 'часов' }, { v: pad(timeLeft.m), l: 'минут' }, { v: pad(timeLeft.s), l: 'секунд' }].map((t, i) => (
+              <div key={t.l} className="flex items-center gap-3">
+                {i > 0 && <span className="font-display font-black text-3xl opacity-40">:</span>}
+                <div className="text-center">
+                  <div className="font-display font-black text-4xl md:text-5xl tabular-nums leading-none">{t.v}</div>
+                  <div className="text-[10px] uppercase tracking-widest opacity-50 mt-1">{t.l}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <a href="https://t.me/THORNSHOOP" target="_blank" rel="noreferrer">
+            <Button variant="outline" className="rounded-xl border-background/30 text-background hover:bg-background hover:text-foreground font-semibold shrink-0">
+              Уведомить меня <Icon name="Bell" size={16} />
+            </Button>
+          </a>
+        </div>
+      </section>
+
+      {/* КАК ЭТО РАБОТАЕТ */}
+      <section className="container py-16">
+        <div className="text-center mb-12">
+          <h2 className="font-display font-black text-4xl md:text-5xl tracking-tight">Как это работает</h2>
+          <p className="text-muted-foreground mt-2">От выбора до двери — 4 простых шага</p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { n: '01', icon: 'Search', title: 'Выбираешь', desc: 'Находишь товар в каталоге или скидываешь ссылку с китайского сайта' },
+            { n: '02', icon: 'CreditCard', title: 'Оплачиваешь', desc: 'Оплачиваешь заказ на сайте — комиссия сервиса уже включена' },
+            { n: '03', icon: 'PackageCheck', title: 'Выкупаем', desc: 'Мы выкупаем товар, проверяем качество и фотографируем перед отправкой' },
+            { n: '04', icon: 'Truck', title: 'Доставляем', desc: 'Отправляем в Россию. Среднее время — 12–18 дней до вашей двери' },
+          ].map((s, i) => (
+            <div key={s.n} className="bg-card rounded-3xl border border-border p-6 animate-float-up hover-scale" style={{ animationDelay: `${i * 0.08}s` }}>
+              <div className="flex items-start justify-between mb-5">
+                <div className="w-11 h-11 rounded-2xl bg-foreground text-background flex items-center justify-center">
+                  <Icon name={s.icon} size={20} />
+                </div>
+                <span className="font-display font-black text-4xl text-muted-foreground/20">{s.n}</span>
+              </div>
+              <h3 className="font-display font-black text-xl mb-2">{s.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* CATALOG */}
       <section id="catalog" className="container py-20">
