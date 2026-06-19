@@ -295,9 +295,8 @@ const Index = () => {
             <h2 className="font-display font-black text-3xl tracking-tight mb-4">Поддержка</h2>
             <p className="text-muted-foreground mb-6">Возникли вопросы? Мы на связи каждый день.</p>
             <div className="space-y-3">
-              <a href="#" className="flex items-center gap-3 font-medium hover:text-primary transition-colors"><Icon name="Mail" size={18} /> support@drip.shop</a>
-              <a href="#" className="flex items-center gap-3 font-medium hover:text-primary transition-colors"><Icon name="Send" size={18} /> Telegram-чат поддержки</a>
-              <a href="#" className="flex items-center gap-3 font-medium hover:text-primary transition-colors"><Icon name="Phone" size={18} /> 8 800 555-35-35</a>
+              <a href="https://t.me/THORNSHOOP" target="_blank" rel="noreferrer" className="flex items-center gap-3 font-medium hover:text-primary transition-colors"><Icon name="Send" size={18} /> @THORNSHOOP</a>
+              <a href="tel:89373451240" className="flex items-center gap-3 font-medium hover:text-primary transition-colors"><Icon name="Phone" size={18} /> 8 937 345-12-40</a>
             </div>
           </div>
         </div>
