@@ -296,7 +296,10 @@ const Index = () => {
             <p className="text-muted-foreground mb-6">Возникли вопросы? Мы на связи каждый день.</p>
             <div className="space-y-3">
               <a href="https://t.me/THORNSHOOP" target="_blank" rel="noreferrer" className="flex items-center gap-3 font-medium hover:text-primary transition-colors"><Icon name="Send" size={18} /> @THORNSHOOP</a>
+              <a href="https://t.me/TRORNSHOP1" target="_blank" rel="noreferrer" className="flex items-center gap-3 font-medium hover:text-primary transition-colors"><Icon name="Send" size={18} /> @TRORNSHOP1</a>
+              <a href="https://t.me/THORNSHOP2" target="_blank" rel="noreferrer" className="flex items-center gap-3 font-medium hover:text-primary transition-colors"><Icon name="Send" size={18} /> @THORNSHOP2</a>
               <a href="tel:89373451240" className="flex items-center gap-3 font-medium hover:text-primary transition-colors"><Icon name="Phone" size={18} /> 8 937 345-12-40</a>
+              <a href="tel:89279273937" className="flex items-center gap-3 font-medium hover:text-primary transition-colors"><Icon name="Phone" size={18} /> 8 927 927-39-37</a>
             </div>
           </div>
         </div>
